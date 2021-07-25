@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.therecipebook">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.TheRecipeBook">
+        <provider
+            android:name=".RecipeBookContentProvider"
+            android:authorities="com.example.recipe"
+            android:enabled="true"
+            android:exported="true"></provider>
+
+        <activity android:name=".ViewURLRecipe" />
+        <activity android:name=".ViewTextRecipe" />
+        <activity android:name=".SaveURLRecipe" />
+        <activity android:name=".SaveTextRecipe" />
+        <activity android:name=".SaveNewRecipe" />
+        <activity android:name=".SearchRecipe" />
+        <activity android:name=".GroceryRecipeViewer" />
+        <activity android:name=".SimpleRecipeViewer" />
+        <activity android:name=".CreateUser" />
+        <activity android:name=".UserProfile" />
+        <activity android:name=".LogIn">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

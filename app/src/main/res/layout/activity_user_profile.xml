@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UserProfile">
+
+    <TextView
+        android:id="@+id/profileUsernameTV"
+        android:layout_width="371dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="70dp"
+        android:text="RecipeFreak7's Profile:"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/savedRecipesButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/savedRecipesButton"
+        android:layout_width="225dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="93dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="93dp"
+        android:text="View Saved Recipes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileUsernameTV" />
+
+    <Button
+        android:id="@+id/recipeSearchButton"
+        android:layout_width="225dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="93dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="93dp"
+        android:text="Search for a Recipe"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/savedRecipesButton" />
+
+    <Button
+        android:id="@+id/saveNewRecipeButton"
+        android:layout_width="225dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="93dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="93dp"
+        android:text="Save New Recipe"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recipeSearchButton" />
+
+    <Button
+        android:id="@+id/groceryListButton"
+        android:layout_width="225dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="93dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="93dp"
+        android:text="View Grocery List"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/saveNewRecipeButton" />
+
+    <Button
+        android:id="@+id/inboxButton"
+        android:layout_width="225dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="93dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="93dp"
+        android:text="View Inbox"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/groceryListButton" />
+
+    <Button
+        android:id="@+id/randomRecipeButton"
+        android:layout_width="225dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="93dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="93dp"
+        android:text="Get a Random Recipe!"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inboxButton" />
+</androidx.constraintlayout.widget.ConstraintLayout>
