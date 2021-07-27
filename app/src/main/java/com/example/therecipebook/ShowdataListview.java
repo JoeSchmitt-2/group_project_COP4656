@@ -34,7 +34,7 @@ public class ShowdataListview extends AppCompatActivity {
         ingredients.clear();
         if (cursor.moveToFirst()) {
             do {
-                ingredients.add(cursor.getString(cursor.getColumnIndex("ingredients")));
+                ingredients.add(cursor.getString(cursor.getColumnIndex("name")));
             } while (cursor.moveToNext());
         }
         CustomAdapter ca = new CustomAdapter(ShowdataListview.this, ingredients);
