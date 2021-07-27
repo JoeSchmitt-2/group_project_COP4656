@@ -45,8 +45,4 @@ public class GroceryRecipeViewer extends AppCompatActivity implements View.OnCli
             startActivity(intent);
         }
     }
-
-
-
-
 }
