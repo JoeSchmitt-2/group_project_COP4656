@@ -31,7 +31,6 @@ public class ViewTextRecipe extends AppCompatActivity {
                 randRecipe.add(cursor.getString(cursor.getColumnIndex("name")));
             } while (cursor.moveToNext());
         }
-
         //see how many recipes are in the database and generate a random
         //number within the range
         int numRecipes = cursor.getCount();
