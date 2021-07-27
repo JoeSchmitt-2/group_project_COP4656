@@ -15,6 +15,7 @@ public class UserProfile extends AppCompatActivity {
     private Button recipeSearchButton;
     private Button saveNewRecipeButton;
     private Button groceryListButton;
+    private Button inboxButton;
     private Button randomRecipeButton;
 
 
@@ -32,6 +33,7 @@ public class UserProfile extends AppCompatActivity {
             recipeSearchButton = findViewById(R.id.recipeSearchButton);
             saveNewRecipeButton = findViewById(R.id.saveNewRecipeButton);
             groceryListButton = findViewById(R.id.groceryListButton);
+            inboxButton = findViewById(R.id.inboxButton);
             randomRecipeButton = findViewById(R.id.randomRecipeButton);
 
             savedRecipesButton.setOnClickListener(new View.OnClickListener() {
@@ -39,7 +41,6 @@ public class UserProfile extends AppCompatActivity {
                 public void onClick(View v) {
                     Bundle bund = new Bundle();
                     bund.putString("user", bundle.getString("user"));
-                    bund.putString("SRV", "userSavedRecipes");
                     Intent intent = new Intent(v.getContext(), SimpleRecipeViewer.class);
                     intent.putExtras(bund);
                     startActivity(intent);
@@ -74,6 +75,17 @@ public class UserProfile extends AppCompatActivity {
                     Bundle bund = new Bundle();
                     bund.putString("user", bundle.getString("user"));
                     Intent intent = new Intent(v.getContext(), GroceryRecipeViewer.class);
+                    intent.putExtras(bund);
+                    startActivity(intent);
+                }
+            });
+
+            inboxButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Bundle bund = new Bundle();
+                    bund.putString("user", bundle.getString("user"));
+                    Intent intent = new Intent(v.getContext(), SimpleRecipeViewer.class);
                     intent.putExtras(bund);
                     startActivity(intent);
                 }

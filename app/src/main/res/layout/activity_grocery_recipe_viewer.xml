@@ -8,6 +8,7 @@
     tools:context=".GroceryRecipeViewer">
 
     <ListView
+        android:id="@+id/listViewName"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight=".1">
@@ -26,7 +27,7 @@
             android:layout_weight=".1" />
 
         <Button
-            android:id="@+id/button10"
+            android:id="@+id/backButtonGL"
             android:layout_width="150dp"
             android:layout_height="match_parent"
             android:layout_weight=".5"
@@ -38,7 +39,7 @@
             android:layout_weight=".5" />
 
         <Button
-            android:id="@+id/button9"
+            android:id="@+id/getGLButton"
             android:layout_width="150dp"
             android:layout_height="match_parent"
             android:layout_weight=".5"

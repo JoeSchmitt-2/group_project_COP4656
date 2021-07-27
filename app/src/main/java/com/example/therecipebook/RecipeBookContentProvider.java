@@ -149,10 +149,10 @@ public class RecipeBookContentProvider extends ContentProvider {
                 if(name.equals("")){ return null; }
                 if(description.equals("")){ return null; }
                 if(cuisine.equals("")){ return null; }
-                if(cookTime.equals("") && format.equals("text")){ return null; }
-                if(ingredients.equals("") && format.equals("text")){ return null; }
-                if(instructions.equals("") && format.equals("text")){ return null; }
-                if(url.equals("") && format.equals("url")){ return null; }
+                if(cookTime.equals("")){ return null; }
+                if(ingredients.equals("")){ return null; }
+                if(instructions.equals("")){ return null; }
+                if(url.equals("")){ return null; }
                 if(notes.equals("")){ return null; }
                 id = openHelper.getWritableDatabase().insert(TABLE_RECIPES, null, values);
                 return Uri.withAppendedPath(CONTENT_URI_R, "" + id);

@@ -15,13 +15,12 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
-            android:id="@+id/textRecipeLL"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/recipeNameTV"
+                android:id="@+id/textView33"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight=".2"
@@ -34,49 +33,7 @@
                 android:layout_weight=".2" />
 
             <TextView
-                android:id="@+id/description2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight=".2"
-                android:text="Cuisine:"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/cuisineTV"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight=".2"
-                android:text="cuisine"
-                android:textSize="20sp" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="25dp"
-                android:layout_weight=".2" />
-
-            <TextView
-                android:id="@+id/description"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight=".2"
-                android:text="Description:"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/descriptionTV"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight=".2"
-                android:text="\tX minutes"
-                android:textSize="20sp" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="25dp"
-                android:layout_weight=".2" />
-
-            <TextView
-                android:id="@+id/timeToCook"
+                android:id="@+id/textView34"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight=".2"
@@ -84,7 +41,7 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/cookTimeTV"
+                android:id="@+id/textView35"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight=".2"
@@ -104,12 +61,37 @@
                 android:text="Ingredients:"
                 android:textSize="20sp" />
 
-            <LinearLayout
-                android:id="@+id/ingredientsTV"
+            <TextView
+                android:id="@+id/textView37"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight=".1"
-                android:orientation="vertical" />
+                android:layout_height="wrap_content"
+                android:layout_weight=".2"
+                android:text="\tIngredient 1"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/textView38"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".2"
+                android:text="\tIngredient 2"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/textView39"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".2"
+                android:text="\tIngredient 3"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/textView40"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".2"
+                android:text="\tetc..."
+                android:textSize="20sp" />
 
             <Space
                 android:layout_width="match_parent"
@@ -124,12 +106,37 @@
                 android:text="Instructions:"
                 android:textSize="20sp" />
 
-            <LinearLayout
-                android:id="@+id/instructionsTV"
+            <TextView
+                android:id="@+id/textView42"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight=".1"
-                android:orientation="vertical"></LinearLayout>
+                android:layout_height="wrap_content"
+                android:layout_weight=".2"
+                android:text="\tInstruction 1"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/textView43"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".2"
+                android:text="\tInstruction 2"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/textView44"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".2"
+                android:text="\tInstruction 3"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/textView45"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".2"
+                android:text="\tetc..."
+                android:textSize="20sp" />
 
             <Space
                 android:layout_width="match_parent"
@@ -144,12 +151,29 @@
                 android:text="Notes:"
                 android:textSize="20sp" />
 
-            <LinearLayout
-                android:id="@+id/notesTV"
+            <TextView
+                android:id="@+id/textView47"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight=".1"
-                android:orientation="vertical"></LinearLayout>
+                android:layout_height="wrap_content"
+                android:layout_weight=".2"
+                android:text="\tNote 1"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/textView48"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".2"
+                android:text="\tNote 2"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/textView49"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".2"
+                android:text="\tetc..."
+                android:textSize="20sp" />
 
             <Space
                 android:layout_width="match_parent"
@@ -168,7 +192,7 @@
                     android:layout_weight="1" />
 
                 <Button
-                    android:id="@+id/backFromViewTextButton"
+                    android:id="@+id/button20"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -180,47 +204,11 @@
                     android:layout_weight="1" />
 
                 <Button
-                    android:id="@+id/saveTextRecipeToUserButton"
+                    android:id="@+id/button19"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Save" />
-
-                <Space
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-
-                <Space
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-
-                <Button
-                    android:id="@+id/shareTextButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Share" />
-
-                <Space
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-
-                <Button
-                    android:id="@+id/saveTextToGroceryButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Grocery List" />
 
                 <Space
                     android:layout_width="wrap_content"

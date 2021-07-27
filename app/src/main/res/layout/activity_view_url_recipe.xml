@@ -10,43 +10,34 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight=".75"
+        android:layout_weight=".9"
         android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/textView32"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Recipe's Name"
+            android:textSize="24sp" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/textView32"
+            <Space
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".2" />
+
+            <Button
+                android:id="@+id/button18"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_weight=".8"
-                android:text="Recipe's Name"
-                android:textSize="24sp" />
-
-            <Button
-                android:id="@+id/backFromViewURLButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight=".2"
                 android:text="Back" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/shareUrlButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight=".2"
-                android:text="Share" />
 
             <Space
                 android:layout_width="wrap_content"
@@ -54,32 +45,21 @@
                 android:layout_weight=".2" />
 
             <Button
-                android:id="@+id/urlAddGroceryButton"
+                android:id="@+id/button21"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight=".2"
-                android:text="Grocery List"
-                android:textSize="12sp" />
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight=".2" />
-
-            <Button
-                android:id="@+id/saveURLToUserButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight=".2"
+                android:layout_weight=".8"
                 android:text="Save" />
 
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight=".2" />
         </LinearLayout>
     </LinearLayout>
 
     <WebView
-        android:id="@+id/recipeWebView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight=".1"
-        android:visibility="visible" />
+        android:layout_weight=".1" />
 </LinearLayout>

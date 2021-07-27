@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string-array name="recipeFormats">
-        <item>Text</item>
-        <item>URL</item>
-    </string-array>
-</resources>

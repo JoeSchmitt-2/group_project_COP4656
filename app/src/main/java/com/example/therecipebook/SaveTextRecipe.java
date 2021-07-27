@@ -11,9 +11,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 public class SaveTextRecipe extends AppCompatActivity {
 
     private Button saveTextRecipeButton;
@@ -70,37 +67,16 @@ public class SaveTextRecipe extends AppCompatActivity {
                     return;
                 }
                 ingredients = ingredientsET.getText().toString();
-                Pattern p = Pattern.compile("[A-Za-z\\s0-9\\.\\/]+|([A-Za-z\\s0-9\\.\\/]+,([A-Za-z\\s0-9\\.\\/]+)(,[A-Za-z\\s0-9\\.\\/]+)*)");
-                Matcher m = p.matcher(ingredients);
-                if(!m.matches() && !ingredients.equals("All Ingredients\n\n(Please enter items separated with a comma)"))
-                {
-                    Toast.makeText(getApplicationContext(), "Please enter Ingredients as a comma delimited list!", Toast.LENGTH_LONG).show();
-                    return;
-                }
                 if(ingredientsET==null || ingredients.equals("")){
                     Toast.makeText(getApplicationContext(), "Please enter a valid ingredients list!", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 instructions = instructionsET.getText().toString();
-                p = Pattern.compile("([1-9].\\s?[A-Za-z\\s0-9\\.\\/]+)|(([1-9].\\s?[A-Za-z\\s0-9\\.\\/]+)\n)+");
-                m = p.matcher(instructions);
-                if(!m.matches())
-                {
-                    Toast.makeText(getApplicationContext(), "Please enter Instructions in the format: \n#. <Instruction>(new line)\n#. <Instruction>(new line)\n...", Toast.LENGTH_LONG).show();
-                    return;
-                }
                 if(instructionsET==null || instructions.equals("")){
                     Toast.makeText(getApplicationContext(), "Please enter a valid instructions list!", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 notes = notesET.getText().toString();
-                p = Pattern.compile("[A-Za-z\\s0-9\\.\\/]+|([A-Za-z\\s0-9\\.\\/]+,([A-Za-z\\s0-9\\.\\/]+)(,[A-Za-z\\s0-9\\.\\/]+)*)");
-                m = p.matcher(notes);
-                if(!m.matches())
-                {
-                    Toast.makeText(getApplicationContext(), "Please enter Notes as a comma delimited list!", Toast.LENGTH_LONG).show();
-                    return;
-                }
                 if(notesET==null || notes.equals("")){
                     Toast.makeText(getApplicationContext(), "Please enter a valid notes list!", Toast.LENGTH_SHORT).show();
                     return;
@@ -139,7 +115,7 @@ public class SaveTextRecipe extends AppCompatActivity {
                                 savedRecipes.append(recipeName);
                             }
                             else {
-                                savedRecipes.append("-").append(recipeName);
+                                savedRecipes.append(" ").append(recipeName);
                             }
 
                             user.setSavedRecipes(savedRecipes.toString());
