@@ -23,6 +23,7 @@ public class GroceryRecipeViewer extends AppCompatActivity implements View.OnCli
         getListButton.setOnClickListener(this);
         Bundle bundle = new Bundle();
 
+        //brings the user back to the user profile screen
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -35,6 +36,7 @@ public class GroceryRecipeViewer extends AppCompatActivity implements View.OnCli
         });
     }
 
+    //starts the intent when the button is pressed and shows the listview
     @Override
     public void onClick(View view) {
         if(view.getId()==R.id.getGLButton)
