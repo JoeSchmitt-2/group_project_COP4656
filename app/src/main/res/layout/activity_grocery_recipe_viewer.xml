@@ -2,38 +2,51 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".GroceryRecipeViewer">
 
-
     <ListView
-        android:id="@+id/listViewName"
         android:layout_width="match_parent"
-        android:layout_height="533dp">
+        android:layout_height="match_parent"
+        android:layout_weight=".1">
 
     </ListView>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_weight=".9"
         android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/backButtonGL"
-            android:layout_width="120dp"
+        <Space
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight=".1" />
+
+        <Button
+            android:id="@+id/button10"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".5"
             android:text="Back" />
 
-        <Button
-            android:id="@+id/getGLButton"
-            android:layout_width="194dp"
+        <Space
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight=".5" />
+
+        <Button
+            android:id="@+id/button9"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".5"
             android:text="Get Grocery List" />
 
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".1" />
     </LinearLayout>
-
-
 </LinearLayout>

@@ -39,7 +39,7 @@
         android:layout_width="225dp"
         android:layout_height="50dp"
         android:layout_marginStart="93dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="93dp"
         android:text="Search for a Recipe"
         app:layout_constraintEnd_toEndOf="parent"
@@ -51,7 +51,7 @@
         android:layout_width="225dp"
         android:layout_height="50dp"
         android:layout_marginStart="93dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="93dp"
         android:text="Save New Recipe"
         app:layout_constraintEnd_toEndOf="parent"
@@ -63,7 +63,7 @@
         android:layout_width="225dp"
         android:layout_height="50dp"
         android:layout_marginStart="93dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="93dp"
         android:text="View Grocery List"
         app:layout_constraintEnd_toEndOf="parent"
@@ -71,26 +71,14 @@
         app:layout_constraintTop_toBottomOf="@+id/saveNewRecipeButton" />
 
     <Button
-        android:id="@+id/inboxButton"
-        android:layout_width="225dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="93dp"
-        android:layout_marginTop="35dp"
-        android:layout_marginEnd="93dp"
-        android:text="View Inbox"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/groceryListButton" />
-
-    <Button
         android:id="@+id/randomRecipeButton"
         android:layout_width="225dp"
         android:layout_height="50dp"
         android:layout_marginStart="93dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="93dp"
         android:text="Get a Random Recipe!"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inboxButton" />
+        app:layout_constraintTop_toBottomOf="@+id/groceryListButton" />
 </androidx.constraintlayout.widget.ConstraintLayout>
