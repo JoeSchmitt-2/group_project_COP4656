@@ -2,8 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.therecipebook">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -21,6 +19,7 @@
             android:exported="true" />
 
         <activity android:name=".ViewURLRecipe" />
+        <activity android:name=".ShowdataListview" />
         <activity android:name=".ViewTextRecipe" />
         <activity android:name=".SaveURLRecipe" />
         <activity android:name=".SaveTextRecipe" />
@@ -31,6 +30,7 @@
         <activity android:name=".CreateUser" />
         <activity android:name=".UserProfile" />
         <activity android:name=".LogIn">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

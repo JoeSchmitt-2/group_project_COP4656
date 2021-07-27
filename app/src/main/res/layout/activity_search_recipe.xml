@@ -7,83 +7,72 @@
     tools:context=".SearchRecipe">
 
     <Spinner
-        android:id="@+id/recipeFormatSpinner"
+        android:id="@+id/spinner"
         android:layout_width="170dp"
         android:layout_height="61dp"
-        android:layout_marginTop="22dp"
+        android:layout_marginTop="37dp"
         android:layout_marginEnd="56dp"
-        android:entries="@array/recipeFormats"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+        app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
     <TextView
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="68dp"
-        android:layout_marginTop="42dp"
+        android:layout_marginTop="55dp"
         android:layout_marginEnd="56dp"
         android:text="Format:"
         android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/recipeFormatSpinner"
+        app:layout_constraintEnd_toStartOf="@+id/spinner"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="57dp"
+        android:layout_marginEnd="13dp"
+        android:text="Recipe Name:"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
     <TextView
         android:id="@+id/textView14"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="58dp"
-        android:layout_marginTop="75dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginStart="67dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="15dp"
         android:text="Cuisine:"
         android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/cuisineSearchET"
+        app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName4"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+        app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
     <TextView
         android:id="@+id/textView15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
+        android:layout_marginStart="36dp"
         android:layout_marginTop="60dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginEnd="18dp"
         android:text="Cook Time:"
         android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/textView3"
+        app:layout_constraintEnd_toStartOf="@+id/editTextNumber"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView14" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="4dp"
-        android:text="less than"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/cookTimeSearchET"
-        app:layout_constraintStart_toEndOf="@+id/textView15"
-        app:layout_constraintTop_toBottomOf="@+id/textView14" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="(or equal to)"
-        android:textSize="10sp"
-        app:layout_constraintStart_toStartOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <TextView
         android:id="@+id/textView17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="35dp"
         android:text="Contains Ingredients:"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -93,12 +82,14 @@
         android:id="@+id/textView16"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="9dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginStart="232dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="115dp"
         android:text="minutes"
         android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@+id/cookTimeSearchET"
-        app:layout_constraintTop_toBottomOf="@+id/cuisineSearchET" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName4" />
 
     <TextView
         android:id="@+id/textView12"
@@ -111,56 +102,47 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="(Ignore fields Cook Time/Ingredients if Format is URL)"
-        android:textSize="11sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView50" />
-
-    <TextView
-        android:id="@+id/textView50"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="Leaving a field with its default value will cause\nall of that type to be factored in the search."
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView12" />
-
     <EditText
-        android:id="@+id/cuisineSearchET"
+        android:id="@+id/editTextTextPersonName3"
         android:layout_width="231dp"
         android:layout_height="45dp"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="27dp"
+        android:layout_marginEnd="38dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName4"
+        android:layout_width="231dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="112dp"
         android:layout_marginEnd="36dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="All Cuisines"
+        android:text="Name"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recipeFormatSpinner" />
+        app:layout_constraintTop_toBottomOf="@+id/spinner" />
 
     <EditText
-        android:id="@+id/cookTimeSearchET"
+        android:id="@+id/editTextNumber"
         android:layout_width="79dp"
         android:layout_height="50dp"
         android:layout_marginTop="34dp"
         android:layout_marginEnd="9dp"
         android:ems="10"
         android:inputType="number"
-        android:text="0"
         app:layout_constraintEnd_toStartOf="@+id/textView16"
-        app:layout_constraintTop_toBottomOf="@+id/cuisineSearchET" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName4" />
 
     <EditText
-        android:id="@+id/ingredientsSearchET"
+        android:id="@+id/ingredientsET"
         android:layout_width="335dp"
         android:layout_height="126dp"
         android:layout_marginStart="38dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="38dp"
         android:background="@null"
         android:ems="10"
@@ -171,31 +153,30 @@
         android:scrollbarStyle="insideInset"
         android:scrollbars="vertical"
         android:scrollHorizontally="false"
-        android:text="All Ingredients\n\n(Please enter items separated with a comma)"
+        android:text="Ingredient 1, Ingredient 2, Ingredient 3, Ingredient 4, Ingredient 5, etc..."
         android:textAppearance="?android:attr/textAppearanceMedium"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
     <Button
-        android:id="@+id/backFromSearchButton"
+        android:id="@+id/button12"
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:layout_marginStart="82dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:text="Back"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ingredientsSearchET" />
+        app:layout_constraintTop_toBottomOf="@+id/ingredientsET" />
 
     <Button
-        android:id="@+id/searchButton"
+        android:id="@+id/button13"
         android:layout_width="100dp"
         android:layout_height="50dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="82dp"
         android:text="Search"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ingredientsSearchET" />
+        app:layout_constraintTop_toBottomOf="@+id/ingredientsET" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
