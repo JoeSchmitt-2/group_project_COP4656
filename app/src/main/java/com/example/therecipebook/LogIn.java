@@ -37,6 +37,27 @@ public class LogIn extends AppCompatActivity {
         passwordET = findViewById(R.id.passwordET);
         createUserTV = findViewById(R.id.createUserTV);
         loginButton = findViewById(R.id.logInButton);
+
+        Button duser = findViewById(R.id.dUserB);
+        Button drecipe = findViewById(R.id.dRecipeB);
+        duser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getApplication().getContentResolver().delete(RecipeBookContentProvider.CONTENT_URI_U, null, null);
+                Intent intent = new Intent(v.getContext(), LogIn.class);
+                startActivity(intent);
+            }
+        });
+        drecipe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getApplication().getContentResolver().delete(RecipeBookContentProvider.CONTENT_URI_R, null, null);
+                Intent intent = new Intent(v.getContext(), LogIn.class);
+                startActivity(intent);
+            }
+        });
+
+
         createUserTV.setPaintFlags(createUserTV.getPaintFlags() |   Paint.UNDERLINE_TEXT_FLAG);
         createUserTV.setOnClickListener(new View.OnClickListener() {
             @Override

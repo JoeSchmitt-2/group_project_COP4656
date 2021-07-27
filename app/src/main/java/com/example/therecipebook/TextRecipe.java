@@ -1,48 +1,46 @@
 package com.example.therecipebook;
 
-public class TextRecipe extends Recipe{
+public class TextRecipe extends Recipe {
 
     private Integer cookTime;
-    private Ingredients[] ingredients;
-    private String[] instructions;
+    private String ingredients;
+    private String instructions;
+
+    public TextRecipe(String recipeName){
+        this.name = recipeName;
+        this.format = "text";
+        this.cuisine = "";
+        this.notes = "";
+        this.description = "";
+        this.ingredients = "";
+        this.instructions = "";
+        this.cookTime = 0;
+    }
+
+    public TextRecipe(String recipeName, String format,String cuisine, String notes, String description,
+                      String ingredients, String instructions, int cookTime){
+        this.name = recipeName;
+        this.format = format;
+        this.cuisine = cuisine;
+        this.notes = notes;
+        this.description = description;
+        this.ingredients = ingredients;
+        this.instructions = instructions;
+        this.cookTime = cookTime;
+    }
+
 
 
     public Integer getCookTime() {
         return cookTime;
     }
 
-    public Ingredients[] getIngredients() {
+    public String getIngredients() {
         return ingredients;
     }
 
-    public String[] getInstructions() {
+    public String getInstructions() {
         return instructions;
     }
 
-
-}
-
-class Ingredients {
-    Float amount;
-    String units;
-    String item;
-
-    public Ingredients(Float amount, String units, String item)
-    {
-        this.amount = amount;
-        this.units = units;
-        this.item = item;
-    }
-
-    public Float getAmount() {
-        return amount;
-    }
-
-    public String getUnits() {
-        return units;
-    }
-
-    public String getItem() {
-        return item;
-    }
 }

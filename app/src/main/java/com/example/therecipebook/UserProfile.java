@@ -22,7 +22,7 @@ public class UserProfile extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Intent intent =getIntent();
+        Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         setContentView(R.layout.activity_user_profile);
         if(bundle!=null) {

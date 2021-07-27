@@ -7,7 +7,7 @@
     tools:context=".SaveTextRecipe">
 
     <EditText
-        android:id="@+id/ingredientsET3"
+        android:id="@+id/ingredientsSaveET"
         android:layout_width="335dp"
         android:layout_height="126dp"
         android:layout_marginStart="38dp"
@@ -29,7 +29,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView26" />
 
     <EditText
-        android:id="@+id/ingredientsET4"
+        android:id="@+id/instructionsSaveET"
         android:layout_width="335dp"
         android:layout_height="126dp"
         android:layout_marginStart="38dp"
@@ -54,11 +54,12 @@
         android:id="@+id/textView26"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="42dp"
         android:layout_marginTop="50dp"
         android:text="Ingredients:"
         android:textSize="18sp"
-        app:layout_constraintTop_toBottomOf="@+id/textView25"
-        tools:layout_editor_absoluteX="42dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView25" />
 
     <TextView
         android:id="@+id/textView27"
@@ -69,7 +70,7 @@
         android:text="Instructions:"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ingredientsET3" />
+        app:layout_constraintTop_toBottomOf="@+id/ingredientsSaveET" />
 
     <TextView
         android:id="@+id/textView28"
@@ -80,10 +81,10 @@
         android:text="Notes:"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ingredientsET4" />
+        app:layout_constraintTop_toBottomOf="@+id/instructionsSaveET" />
 
     <EditText
-        android:id="@+id/editTextNumber2"
+        android:id="@+id/cookTimeET"
         android:layout_width="79dp"
         android:layout_height="50dp"
         android:layout_marginStart="15dp"
@@ -101,7 +102,7 @@
         android:layout_marginTop="52dp"
         android:text="minutes"
         android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@+id/editTextNumber2"
+        app:layout_constraintStart_toEndOf="@+id/cookTimeET"
         app:layout_constraintTop_toBottomOf="@+id/textView23" />
 
     <TextView
@@ -127,7 +128,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName5"
+        android:id="@+id/notesSaveET"
         android:layout_width="261dp"
         android:layout_height="50dp"
         android:layout_marginStart="10dp"
@@ -136,10 +137,10 @@
         android:inputType="textPersonName"
         android:text="Note 1, Note 2, Note 3, etc..."
         app:layout_constraintStart_toEndOf="@+id/textView28"
-        app:layout_constraintTop_toBottomOf="@+id/ingredientsET4" />
+        app:layout_constraintTop_toBottomOf="@+id/instructionsSaveET" />
 
     <Button
-        android:id="@+id/button16"
+        android:id="@+id/saveTextRecipeButton"
         android:layout_width="320dp"
         android:layout_height="53dp"
         android:layout_marginStart="45dp"
@@ -148,5 +149,5 @@
         android:text="Save"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName5" />
+        app:layout_constraintTop_toBottomOf="@+id/notesSaveET" />
 </androidx.constraintlayout.widget.ConstraintLayout>

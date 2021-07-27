@@ -46,6 +46,7 @@ public class CreateUser extends AppCompatActivity {
             public void onClick(View v) {
                 String newUsername = newUsernameET.getText().toString();
                 String newPassword = newPasswordET.getText().toString();
+
                 if(!newUsername.equals("") && !newPassword.equals("")) {
                     try {
                         String selection = "username=?";
@@ -55,13 +56,13 @@ public class CreateUser extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "-- \'" + count + "\'!", Toast.LENGTH_LONG).show();
 
                         if(count == 0){
+                            User user = new User(newUsername);
                             String encryptedPassword = getEncodedString(newPassword);
                             ContentValues contentValues = new ContentValues();
-                            contentValues.put(RecipeBookContentProvider.COLUMN_USERNAME, newUsername);
+                            contentValues.put(RecipeBookContentProvider.COLUMN_USERNAME, user.getUsername());
                             contentValues.put(RecipeBookContentProvider.COLUMN_PASSWORD, encryptedPassword);
-                            contentValues.put(RecipeBookContentProvider.COLUMN_SAVEDRECIPES, (byte[]) null);
-                            contentValues.put(RecipeBookContentProvider.COLUMN_GROCERYLISTRECIPES, (byte[]) null);
-                            contentValues.put(RecipeBookContentProvider.COLUMN_INBOXMESSAGES, (byte[]) null);
+                            contentValues.put(RecipeBookContentProvider.COLUMN_SAVEDRECIPES, user.getSavedRecipes());
+                            contentValues.put(RecipeBookContentProvider.COLUMN_GROCERYLISTRECIPES,user.getGroceryListRecipes());
                         if (getApplicationContext().getContentResolver().insert(RecipeBookContentProvider.CONTENT_URI_U, contentValues) != null) {
                             Toast.makeText(getApplicationContext(), "Created account for \'" + newUsername + "\'!\nWelcome to the Recipe Book!", Toast.LENGTH_LONG).show();
                         } else

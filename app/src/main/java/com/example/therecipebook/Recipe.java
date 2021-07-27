@@ -2,11 +2,11 @@ package com.example.therecipebook;
 
 public abstract class Recipe {
 
-    private String format;
-    private String name;
-    private String cuisine;
-    private String description;
-    private String[] notes;
+    protected String format;
+    protected String name;
+    protected String cuisine;
+    protected String description;
+    protected String notes;
 
 
     public String getFormat() {
@@ -25,7 +25,7 @@ public abstract class Recipe {
         return description;
     }
 
-    public String[] getNotes() {
+    public String getNotes() {
         return notes;
     }
 }

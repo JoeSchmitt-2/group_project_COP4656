@@ -35,7 +35,6 @@ public class RecipeBookContentProvider extends ContentProvider {
     public final static String COLUMN_PASSWORD = "password";
     public final static String COLUMN_SAVEDRECIPES = "savedRecipes";
     public final static String COLUMN_GROCERYLISTRECIPES = "groceryListRecipes";
-    public final static String COLUMN_INBOXMESSAGES = "inboxMessages";
 
 
     public final static String TABLE_RECIPES= "Recipes";
@@ -68,9 +67,8 @@ public class RecipeBookContentProvider extends ContentProvider {
             "(" + "_ID INTEGER PRIMARY KEY, " +
             COLUMN_USERNAME + " TEXT," +
             COLUMN_PASSWORD + " TEXT," +
-            COLUMN_SAVEDRECIPES + " BLOB," +
-            COLUMN_GROCERYLISTRECIPES+ " BLOB," +
-            COLUMN_INBOXMESSAGES + " BLOB)";
+            COLUMN_SAVEDRECIPES + " TEXT," +
+            COLUMN_GROCERYLISTRECIPES + " TEXT)";
 
 
     public static final String SQL_CREATE_RECIPE = "CREATE TABLE " + TABLE_RECIPES +
@@ -80,10 +78,10 @@ public class RecipeBookContentProvider extends ContentProvider {
             COLUMN_DESCRIPTION + " TEXT," +
             COLUMN_CUISINE+ " TEXT," +
             COLUMN_COOKTIME + " INTEGER," +
-            COLUMN_INGREDIENTS + " BLOB," +
-            COLUMN_INSTRUCTIONS + " BLOB," +
+            COLUMN_INGREDIENTS + " TEXT," +
+            COLUMN_INSTRUCTIONS + " TEXT," +
             COLUMN_URL + " TEXT," +
-            COLUMN_NOTES + " BLOB)";
+            COLUMN_NOTES + " TEXT)";
 
 
     private MainDatabaseHelper openHelper;
@@ -94,8 +92,15 @@ public class RecipeBookContentProvider extends ContentProvider {
 
     @Override
     public int delete(Uri uri, String selection, String[] selectionArgs) {
-        // Implement this to handle requests to delete one or more rows.
-        throw new UnsupportedOperationException("Not yet implemented");
+        Uri _uri = null;
+        switch (uriMatcher.match(uri)) {
+            case USER:
+                return openHelper.getReadableDatabase().delete(TABLE_USERS, selection, selectionArgs);
+            case RECIPE:
+                return openHelper.getReadableDatabase().delete(TABLE_RECIPES, selection, selectionArgs);
+            default:
+                return 0;
+        }
     }
 
     @Override
@@ -112,6 +117,8 @@ public class RecipeBookContentProvider extends ContentProvider {
             case USER:
                 String username = values.getAsString(COLUMN_USERNAME).trim();
                 String password = values.getAsString(COLUMN_PASSWORD).trim();
+                String savedRecipes = values.getAsString(COLUMN_SAVEDRECIPES).trim();
+                String groceryListRecipes = values.getAsString(COLUMN_GROCERYLISTRECIPES).trim();
 
                         //This part will only become relevant if some form of error checking is needed,
                         //Since we are initializing User Profiles with empty lists, the values are initially
@@ -132,7 +139,7 @@ public class RecipeBookContentProvider extends ContentProvider {
                 String name = values.getAsString(COLUMN_NAME).trim();
                 String description = values.getAsString(COLUMN_DESCRIPTION).trim();
                 String cuisine = values.getAsString(COLUMN_CUISINE).trim();
-                String cookTime = values.getAsString(COLUMN_COOKTIME).trim();
+                String cookTime = values.getAsInteger(COLUMN_COOKTIME).toString().trim();
                 String ingredients = values.getAsString(COLUMN_INGREDIENTS).trim();
                 String instructions = values.getAsString(COLUMN_INSTRUCTIONS).trim();
                 String url = values.getAsString(COLUMN_URL).trim();
@@ -180,8 +187,16 @@ public class RecipeBookContentProvider extends ContentProvider {
     @Override
     public int update(Uri uri, ContentValues values, String selection,
                       String[] selectionArgs) {
-        // TODO: Implement this to handle requests to update one or more rows.
-        throw new UnsupportedOperationException("Not yet implemented");
+        Uri _uri = null;
+        switch (uriMatcher.match(uri)) {
+            case USER:
+                return openHelper.getReadableDatabase().update(TABLE_USERS, values, selection, selectionArgs);
+            case RECIPE:
+                return openHelper.getReadableDatabase().update(TABLE_RECIPES, values, selection, selectionArgs);
+            default:
+                return 0;
+        }
+
     }
 
 
