@@ -16,6 +16,7 @@
             android:exported="true"></provider>
 
         <activity android:name=".ViewURLRecipe" />
+        <activity android:name=".ShowdataListview" />
         <activity android:name=".ViewTextRecipe" />
         <activity android:name=".SaveURLRecipe" />
         <activity android:name=".SaveTextRecipe" />
@@ -26,6 +27,7 @@
         <activity android:name=".CreateUser" />
         <activity android:name=".UserProfile" />
         <activity android:name=".LogIn">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
