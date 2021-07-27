@@ -11,10 +11,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
+//Displays the text recipe in a LinearLayout format and is scrollable based on size,
+//with buttons with various features to do with the recipe
 public class ViewTextRecipe extends AppCompatActivity {
 
     private String recipeName;
@@ -22,9 +25,6 @@ public class ViewTextRecipe extends AppCompatActivity {
     private TextView cuisineTV;
     private TextView cookTimeTV;
     private TextView descriptionTV;
-    //private TextView recipeNameTV;
-    //private TextView recipeNameTV;
-    //private TextView recipeNameTV;
     private LinearLayout ingrLayout;
     private LinearLayout instrLayout;
     private LinearLayout notesLayout;
@@ -45,6 +45,7 @@ public class ViewTextRecipe extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         recipeName = bundle.getString("recipeName");
+        String username = bundle.getString("user");
         recipeNameTV = findViewById(R.id.recipeNameTV);
         cookTimeTV = findViewById(R.id.cookTimeTV);
         cuisineTV = findViewById(R.id.cuisineTV);
@@ -52,6 +53,7 @@ public class ViewTextRecipe extends AppCompatActivity {
         backFromViewTextButton = findViewById(R.id.backFromViewTextButton);
         saveTextToUserButton = findViewById(R.id.saveTextRecipeToUserButton);
         saveTextToGroceryButton = findViewById(R.id.saveTextToGroceryButton);
+        shareTextButton = findViewById(R.id.shareTextButton);
         String selection = "name=?";
         Cursor cursor = getApplication().getContentResolver().query(RecipeBookContentProvider.CONTENT_URI_R, null, selection, new String[]{recipeName}, null);
         if(cursor.getCount() == 1){
@@ -109,24 +111,55 @@ public class ViewTextRecipe extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        User user = getUserFromDatabase(username);
+        String d = "Delete";
+        if(user.getSavedRecipes().contains(recipeName)) {
+            saveTextToUserButton.setText(d);
+            saveTextToUserButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    User user = getUserFromDatabase(bundle.getString("user"));
+                    String savedRecipes = new String(user.getSavedRecipes());
+                    savedRecipes = savedRecipes.replace(recipeName+"-", "");
+                    user.setSavedRecipes(savedRecipes.toString());
 
-        saveTextToUserButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                User user = getUserFromDatabase(bundle.getString("user"));
-                StringBuilder savedRecipes = new StringBuilder(user.getSavedRecipes());
+                    updateUserInDatabase(user);
+                    Toast.makeText(getApplicationContext(), "Recipe deleted!", Toast.LENGTH_LONG).show();
 
-                if(savedRecipes.length() == 0){
-                    savedRecipes.append(recipeName);
+                    Bundle bund = new Bundle();
+                    bund.putString("user", bundle.getString("user"));
+                    Intent intent = new Intent(v.getContext(), UserProfile.class);
+                    intent.putExtras(bund);
+                    startActivity(intent);
                 }
-                else {
-                    savedRecipes.append("-").append(recipeName);
-                }
-                user.setSavedRecipes(savedRecipes.toString());
-                updateUserInDatabase(user);
-            }
-        });
+            });
+        }else {
+            saveTextToUserButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    User user = getUserFromDatabase(bundle.getString("user"));
+                    StringBuilder savedRecipes = new StringBuilder(user.getSavedRecipes());
 
+                    if (savedRecipes.length() == 0) {
+                        savedRecipes.append(recipeName);
+                    } else if (!savedRecipes.toString().contains(recipeName)) {
+                        savedRecipes.append("-").append(recipeName);
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Recipe already saved!", Toast.LENGTH_LONG).show();
+                        return;
+                    }
+                    user.setSavedRecipes(savedRecipes.toString());
+                    updateUserInDatabase(user);
+                    Toast.makeText(getApplicationContext(), "Recipe saved!", Toast.LENGTH_LONG).show();
+
+                    Bundle bund = new Bundle();
+                    bund.putString("user", bundle.getString("user"));
+                    Intent intent = new Intent(v.getContext(), UserProfile.class);
+                    intent.putExtras(bund);
+                    startActivity(intent);
+                }
+            });
+        }
         saveTextToGroceryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -140,7 +173,23 @@ public class ViewTextRecipe extends AppCompatActivity {
                     glRecipes.append("-").append(recipeName);
                 }
                 user.setGroceryListRecipes(glRecipes.toString());
-                updateUserInDatabase(user);
+                updateUserGInDatabase(user);
+                Toast.makeText(getApplicationContext(), "Added to Grocery List!", Toast.LENGTH_LONG).show();
+            }
+        });
+
+
+        shareTextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Bundle bund = new Bundle();
+                bund.putString("user", bundle.getString("user"));
+                bund.putString("format", "text");
+                bund.putString("recipeName", recipeName);
+                Intent intent = new Intent(v.getContext(), ShareRecipe.class);
+                intent.putExtras(bund);
+                startActivity(intent);
             }
         });
 
@@ -174,5 +223,14 @@ public class ViewTextRecipe extends AppCompatActivity {
         getApplication().getContentResolver().update(RecipeBookContentProvider.CONTENT_URI_U, contentValues, selection, new String[]{user.getUsername()});
 
     }
+
+    private void updateUserGInDatabase(User user){
+        String selection = "username=?";
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(RecipeBookContentProvider.COLUMN_GROCERYLISTRECIPES, user.getGroceryListRecipes());
+        getApplication().getContentResolver().update(RecipeBookContentProvider.CONTENT_URI_U, contentValues, selection, new String[]{user.getUsername()});
+
+    }
+
 
 }

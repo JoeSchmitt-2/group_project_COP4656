@@ -11,11 +11,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TheRecipeBook">
+        <activity android:name=".ShareRecipe"></activity>
+        <activity android:name=".GroceryIngredients" />
+
         <provider
             android:name=".RecipeBookContentProvider"
             android:authorities="com.example.recipe"
             android:enabled="true"
-            android:exported="true"></provider>
+            android:exported="true" />
 
         <activity android:name=".ViewURLRecipe" />
         <activity android:name=".ViewTextRecipe" />

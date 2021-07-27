@@ -15,6 +15,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+//A generic Listview used in different ways to display recipes
 public class SimpleRecipeViewer extends AppCompatActivity {
 
     private String username;
@@ -46,6 +47,7 @@ public class SimpleRecipeViewer extends AppCompatActivity {
             }
 
 
+
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, savedRecipes);
             display.setAdapter(adapter);
             display.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -58,7 +60,8 @@ public class SimpleRecipeViewer extends AppCompatActivity {
 
                     cursor.moveToNext();
                     String format = cursor.getString(cursor.getColumnIndex(RecipeBookContentProvider.COLUMN_FORMAT));
-                    Toast.makeText(getApplicationContext(), recipeName +" "+format, Toast.LENGTH_SHORT).show();
+                    //Debug Toast
+                    //Toast.makeText(getApplicationContext(), recipeName +" "+format, Toast.LENGTH_SHORT).show();
 
                     cursor.close();
 
@@ -76,11 +79,8 @@ public class SimpleRecipeViewer extends AppCompatActivity {
                         intent.putExtras(bund);
                         startActivity(intent);
                     }
-
-
                 }
             });
-
         }
         backFromViewButton.setOnClickListener(new View.OnClickListener() {
             @Override

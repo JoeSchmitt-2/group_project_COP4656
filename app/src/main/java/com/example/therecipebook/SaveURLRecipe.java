@@ -21,12 +21,8 @@ public class SaveURLRecipe extends AppCompatActivity {
     private String description;
     private String url;
     private String notes;
-
     private EditText urlET;
     private EditText notesURLSaveET;
-
-
-
     private Button saveURLRecipeButton;
 
     @Override
@@ -46,8 +42,7 @@ public class SaveURLRecipe extends AppCompatActivity {
             cuisine = bundle.getString("cuisine");
             description = bundle.getString("description");
         }
-
-
+        //Saves URL Recipe to database and validates input
         saveURLRecipeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,6 +59,13 @@ public class SaveURLRecipe extends AppCompatActivity {
                     return;
                 }
                 notes = notesURLSaveET.getText().toString();
+                p = Pattern.compile("[A-Za-z\\s0-9\\.\\/]+|([A-Za-z\\s0-9\\.\\/]+,([A-Za-z\\s0-9\\.\\/]+)(,[A-Za-z\\s0-9\\.\\/]+)*)");
+                m = p.matcher(notes);
+                if(!m.matches())
+                {
+                    Toast.makeText(getApplicationContext(), "Please enter Notes as a comma delimited list!", Toast.LENGTH_LONG).show();
+                    return;
+                }
                 if(notesURLSaveET==null || notes.equals("")){
                     Toast.makeText(getApplicationContext(), "Please enter a valid notes list!", Toast.LENGTH_SHORT).show();
                     return;
@@ -106,6 +108,12 @@ public class SaveURLRecipe extends AppCompatActivity {
 
                             user.setSavedRecipes(savedRecipes.toString());
                             updateUserInDatabase(user);
+                            Bundle bund = new Bundle();
+                            bund.putString("user", bundle.getString("user"));
+                            Intent intent = new Intent(v.getContext(), UserProfile.class);
+                            intent.putExtras(bund);
+                            startActivity(intent);
+
                         } else
                             Toast.makeText(getApplicationContext(), "Error inserting recipe:\'" + recipeName + "\' into Database!", Toast.LENGTH_LONG).show();
 
@@ -127,6 +135,9 @@ public class SaveURLRecipe extends AppCompatActivity {
         });
 
     }
+
+    //Helpers
+
     private User getUserFromDatabase(String username){
         String selection = "username=?";
         Cursor cursor = getApplication().getContentResolver().query(RecipeBookContentProvider.CONTENT_URI_U, null, selection, new String[]{username}, null);

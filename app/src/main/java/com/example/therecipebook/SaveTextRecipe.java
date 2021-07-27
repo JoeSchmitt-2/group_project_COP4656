@@ -48,13 +48,12 @@ public class SaveTextRecipe extends AppCompatActivity {
             description = bundle.getString("description");
         }
 
-
-
         cookTimeET = findViewById(R.id.cookTimeET);
         ingredientsET = findViewById(R.id.ingredientsSaveET);
         instructionsET = findViewById(R.id.instructionsSaveET);
         notesET = findViewById(R.id.notesSaveET);
 
+        //Checks input and enters the recipe into database if valid
         saveTextRecipeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,9 +62,11 @@ public class SaveTextRecipe extends AppCompatActivity {
                 try {
                     cookTime = Integer.parseInt(cookTimeET.getText().toString());
                 }catch (Exception e){
-                    Toast.makeText(getApplicationContext(), "INT ERROR", Toast.LENGTH_SHORT).show();
+                    //Debug Toast
+                    //Toast.makeText(getApplicationContext(), "INT ERROR", Toast.LENGTH_SHORT).show();
                 }
                 if(cookTime <= 0){
+                    //User Toast
                     Toast.makeText(getApplicationContext(), "Please enter a valid cook time!", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -107,13 +108,11 @@ public class SaveTextRecipe extends AppCompatActivity {
                 }
 
                 //Adding the new Recipe to the Recipe Table in the database
-
                 try {
                     String selection = "name=?";
                     Cursor cursor = getApplication().getContentResolver().query(RecipeBookContentProvider.CONTENT_URI_R, null, selection, new String[]{recipeName}, null);
                     int count = cursor.getCount();
                     cursor.close();
-                    //Toast.makeText(getApplicationContext(), "-- \'" + count + "\'!", Toast.LENGTH_LONG).show();
 
                     if(count == 0){
                         TextRecipe recipe = new TextRecipe(recipeName,recipeFormat, cuisine, notes, description, ingredients, instructions, cookTime);
@@ -138,12 +137,22 @@ public class SaveTextRecipe extends AppCompatActivity {
                             if(savedRecipes.length() == 0){
                                 savedRecipes.append(recipeName);
                             }
-                            else {
+                            else if(!savedRecipes.toString().contains(recipeName)){
                                 savedRecipes.append("-").append(recipeName);
                             }
+                            else
+                                Toast.makeText(getApplicationContext(), "Recipe already saved!", Toast.LENGTH_LONG).show();
+
 
                             user.setSavedRecipes(savedRecipes.toString());
                             updateUserInDatabase(user);
+
+                            Bundle bund = new Bundle();
+                            bund.putString("user", username);
+                            Intent intent = new Intent(v.getContext(), UserProfile.class);
+                            intent.putExtras(bund);
+                            startActivity(intent);
+
                         } else
                             Toast.makeText(getApplicationContext(), "Error inserting recipe:\'" + recipeName + "\' into Database!", Toast.LENGTH_LONG).show();
 
@@ -165,6 +174,8 @@ public class SaveTextRecipe extends AppCompatActivity {
         });
 
     }
+
+    //Helpers
 
     private User getUserFromDatabase(String username){
         String selection = "username=?";

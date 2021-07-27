@@ -11,8 +11,6 @@ public class URLRecipe extends Recipe{
         this.notes = notes;
         this.description = description;
         this.url = url;
-
-
     }
 
     public String getUrl() {

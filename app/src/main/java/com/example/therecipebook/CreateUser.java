@@ -42,6 +42,7 @@ public class CreateUser extends AppCompatActivity {
         newPasswordET = findViewById(R.id.newPasswordET);
         createAccountButton = findViewById(R.id.createAccountButton);
         backToLoginButton = findViewById(R.id.backToLoginButton);
+        //Checks for valid Username and Password entries and creates an account
         createAccountButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,6 +89,8 @@ public class CreateUser extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Please make sure both the Username and Password fields have been completed!", Toast.LENGTH_LONG).show();
             }
         });
+
+
         backToLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -95,13 +98,9 @@ public class CreateUser extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
-
-
     }
 
-
+    //Encodes the password
     private static String getEncodedString(String s){
         return Base64.getEncoder().encodeToString(s.getBytes());
     }

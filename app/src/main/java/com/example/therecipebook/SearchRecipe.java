@@ -46,12 +46,10 @@ public class SearchRecipe extends AppCompatActivity {
         Bundle bundle = intent.getExtras();
         backFromSearchButton = findViewById(R.id.backFromSearchButton);
 
-
-
-
-
         recipeFormat = "";
         recipeFormatSpinner.setOnItemSelectedListener(spinnerListener);
+
+        //Performs a DB query based on user input to all of the searchRecipe forms
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,12 +72,6 @@ public class SearchRecipe extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Please enter Ingredients as a comma delimited list!", Toast.LENGTH_LONG).show();
                     return;
                 }
-                //Toast.makeText(getApplicationContext(), cuisine, Toast.LENGTH_SHORT).show();
-                //Toast.makeText(getApplicationContext(), Integer.valueOf(cookTime).toString(), Toast.LENGTH_SHORT).show();
-                //Toast.makeText(getApplicationContext(), ingredients, Toast.LENGTH_SHORT).show();
-                //Toast.makeText(getApplicationContext(), recipeFormat, Toast.LENGTH_SHORT).show();
-
-
 
                 if(recipeFormat.equals("Text") && !cuisine.equals("")
                         && cookTime >= 0 && !ingredients.equals(""))
@@ -150,12 +142,11 @@ public class SearchRecipe extends AppCompatActivity {
                                         cursor.getString(cursor.getColumnIndex(RecipeBookContentProvider.COLUMN_NOTES)),
                                         cursor.getString(cursor.getColumnIndex(RecipeBookContentProvider.COLUMN_DESCRIPTION)),
                                         cursor.getString(cursor.getColumnIndex(RecipeBookContentProvider.COLUMN_INGREDIENTS)),
-                                        cursor.getString(cursor.getColumnIndex(RecipeBookContentProvider.COLUMN_INGREDIENTS)),
+                                        cursor.getString(cursor.getColumnIndex(RecipeBookContentProvider.COLUMN_INSTRUCTIONS)),
                                         cursor.getInt(cursor.getColumnIndex(RecipeBookContentProvider.COLUMN_COOKTIME)) ) );
                             }
                             cursor.close();
                             if(!ingredients.equals("All Ingredients\n\n(Please enter items separated with a comma)")) {
-                                Toast.makeText(getApplicationContext(), "IN it ", Toast.LENGTH_LONG).show();
                                 ArrayList<String> ingredientsToCheck = parseIngredients(ingredients);
                                 for (int i = 0; i < recipesToSearch.size(); i++) {
                                     for (int j = 0; j < ingredientsToCheck.size(); j++) {
@@ -170,7 +161,6 @@ public class SearchRecipe extends AppCompatActivity {
                                 for(int i = 0; i < recipesToDisplay.size(); i++){
                                     recipeNames.add(recipesToDisplay.get(i).getName());
                                 }
-
                                 Bundle bund = new Bundle();
                                 bund.putStringArrayList("recipeNames", recipeNames);
                                 bund.putString("SRV", "searchRecipe");
@@ -180,14 +170,11 @@ public class SearchRecipe extends AppCompatActivity {
                                 startActivity(intent);
                             }
                             else {
-                                Toast.makeText(getApplicationContext(), "INelse", Toast.LENGTH_LONG).show();
-
                                 //Start new activity with recipesToCheck
                                 ArrayList<String> recipeNames = new ArrayList<>();
                                 for(int i = 0; i < recipesToSearch.size(); i++){
                                     recipeNames.add(recipesToSearch.get(i).getName());
                                 }
-
                                 Bundle bund = new Bundle();
                                 bund.putStringArrayList("recipeNames", recipeNames);
                                 bund.putString("SRV", "searchRecipe");
@@ -195,17 +182,11 @@ public class SearchRecipe extends AppCompatActivity {
                                 Intent intent = new Intent(v.getContext(), SimpleRecipeViewer.class);
                                 intent.putExtras(bund);
                                 startActivity(intent);
-
                             }
                         }
-                        Toast.makeText(getApplicationContext(), "OUT THE COUNT", Toast.LENGTH_LONG).show();
-
-
                     }
                     catch (Exception e){
-                    //
-                        Toast.makeText(getApplicationContext(), "EXCEPTION", Toast.LENGTH_LONG).show();
-
+                        //Toast.makeText(getApplicationContext(), "EXCEPTION", Toast.LENGTH_LONG).show();
                     }
                 }
                 else if(recipeFormat.equals("URL") && !cuisine.equals("")){

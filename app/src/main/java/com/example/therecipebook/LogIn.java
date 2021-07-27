@@ -28,7 +28,7 @@ public class LogIn extends AppCompatActivity {
     private Button loginButton;
     private TextView createUserTV;
 
-
+    //Login Screen- was MainActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,9 +38,10 @@ public class LogIn extends AppCompatActivity {
         createUserTV = findViewById(R.id.createUserTV);
         loginButton = findViewById(R.id.logInButton);
 
-        Button duser = findViewById(R.id.dUserB);
-        Button drecipe = findViewById(R.id.dRecipeB);
-        duser.setOnClickListener(new View.OnClickListener() {
+        //Developer purposes
+        //Button duser = findViewById(R.id.dUserB);
+        //Button drecipe = findViewById(R.id.dRecipeB);
+        /*duser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getApplication().getContentResolver().delete(RecipeBookContentProvider.CONTENT_URI_U, null, null);
@@ -55,7 +56,7 @@ public class LogIn extends AppCompatActivity {
                 Intent intent = new Intent(v.getContext(), LogIn.class);
                 startActivity(intent);
             }
-        });
+        });*/
 
 
         createUserTV.setPaintFlags(createUserTV.getPaintFlags() |   Paint.UNDERLINE_TEXT_FLAG);

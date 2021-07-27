@@ -56,6 +56,7 @@ public class SaveNewRecipe extends AppCompatActivity {
                     startActivity(intent);
                 }
             });
+            //Checks input and proceeds to next phase based on format of recipe
             saveRecipeButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
