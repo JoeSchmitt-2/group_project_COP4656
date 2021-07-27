@@ -9,7 +9,6 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 import java.util.ArrayList;
 
-
 public class CustomAdapter extends BaseAdapter {
     private Context mContext;
     RecipeBookContentProvider.MainDatabaseHelper mainDatabaseHelper;
@@ -37,6 +36,7 @@ public class CustomAdapter extends BaseAdapter {
         final    viewHolder holder;
         mainDatabaseHelper = new RecipeBookContentProvider.MainDatabaseHelper(mContext);
         LayoutInflater layoutInflater;
+
         if (convertView == null) {
             layoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = layoutInflater.inflate(R.layout.activity_grocery_list, null);

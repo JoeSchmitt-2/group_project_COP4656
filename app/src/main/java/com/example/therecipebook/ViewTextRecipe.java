@@ -36,7 +36,6 @@ public class ViewTextRecipe extends AppCompatActivity {
         int numRecipes = cursor.getCount();
         Random random = new Random();
         int randNum = random.nextInt(numRecipes);
-
         recipeTV.setText(randRecipe.get(randNum));
     }
 }
