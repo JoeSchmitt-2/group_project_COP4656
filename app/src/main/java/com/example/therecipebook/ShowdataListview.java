@@ -13,6 +13,8 @@ public class ShowdataListview extends AppCompatActivity {
     SQLiteDatabase db;
     private ArrayList<String> ingredients = new ArrayList<String>();
     ListView lv;
+
+    //register the listview
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +26,8 @@ public class ShowdataListview extends AppCompatActivity {
         displayData();
         super.onResume();
     }
+
+    //pulls from the ingredients column and populates the listview
     private void displayData() {
         db = mainDatabaseHelper.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM  Recipes",null);
