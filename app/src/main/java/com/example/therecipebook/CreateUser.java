@@ -18,6 +18,7 @@ import javax.crypto.NoSuchPaddingException;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
@@ -48,12 +49,21 @@ public class CreateUser extends AppCompatActivity {
                 String newPassword = newPasswordET.getText().toString();
 
                 if(!newUsername.equals("") && !newPassword.equals("")) {
+                    if(newUsername.length()>20){
+                        Toast.makeText(getApplicationContext(), "Please ensure your Username is comprised of no more than 20 characters", Toast.LENGTH_LONG).show();
+                        return;
+                    }
+                    if(newPassword.length()>30){
+                        Toast.makeText(getApplicationContext(), "Please ensure your Password is comprised of no more than 30 characters", Toast.LENGTH_LONG).show();
+                        return;
+                    }
                     try {
                         String selection = "username=?";
                         Cursor cursor = getApplication().getContentResolver().query(RecipeBookContentProvider.CONTENT_URI_U, null, selection, new String[]{newUsername}, null);
                         int count = cursor.getCount();
                         cursor.close();
-                        Toast.makeText(getApplicationContext(), "-- \'" + count + "\'!", Toast.LENGTH_LONG).show();
+                        //Debug toast - shows how many users with that username there are - should be 0,or else don't create account
+                        //Toast.makeText(getApplicationContext(), "-- \'" + count + "\'!", Toast.LENGTH_LONG).show();
 
                         if(count == 0){
                             User user = new User(newUsername);
@@ -65,11 +75,13 @@ public class CreateUser extends AppCompatActivity {
                             contentValues.put(RecipeBookContentProvider.COLUMN_GROCERYLISTRECIPES,user.getGroceryListRecipes());
                         if (getApplicationContext().getContentResolver().insert(RecipeBookContentProvider.CONTENT_URI_U, contentValues) != null) {
                             Toast.makeText(getApplicationContext(), "Created account for \'" + newUsername + "\'!\nWelcome to the Recipe Book!", Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(v.getContext(), LogIn.class);
+                            startActivity(intent);
                         } else
                             Toast.makeText(getApplicationContext(), "Error creating account for \'" + newUsername + "\'!", Toast.LENGTH_LONG).show();
                         }
                     } catch (Exception e) {
-                        Toast.makeText(getApplicationContext(), "Error creating account for--- \'" + newUsername + "\'!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Error creating account for: \'" + newUsername + "\'!", Toast.LENGTH_LONG).show();
                       }
                 }
                 else
@@ -79,7 +91,8 @@ public class CreateUser extends AppCompatActivity {
         backToLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(v.getContext(), LogIn.class);
+                startActivity(intent);
             }
         });
 
